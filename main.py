@@ -124,7 +124,7 @@ df_ruth_years = pd.read_sql("""
                             FROM babe_ruth_stats;
                             """, conn3)
 
-print(df_ruth_years)
+# print(df_ruth_years)
 
 # STEP 10
 # Replace None with your code
@@ -133,17 +133,30 @@ df_hr_total = pd.read_sql("""
                           FROM babe_ruth_stats;
                           """, conn3)
 
-print(df_hr_total)
+# print(df_hr_total)
 
 ##### Part 5: Grouping and Aggregation #####
 
 # STEP 11
 # Replace None with your code
-df_teams_years = None
+df_teams_years = pd.read_sql("""
+                             SELECT team, COUNT(team) AS number_years
+                             FROM babe_ruth_stats
+                             GROUP BY team;
+                             """, conn3)
+
+# print(df_teams_years)
 
 # STEP 12
 # Replace None with your code
-df_at_bats = None
+df_at_bats = pd.read_sql("""
+                         SELECT team, AVG(at_bats) AS average_at_bats
+                         FROM babe_ruth_stats
+                         GROUP BY team
+                         HAVING AVG(at_bats) >= 200;
+                         """, conn3)
+
+# print(df_at_bats)
 
 
 conn1.close()
