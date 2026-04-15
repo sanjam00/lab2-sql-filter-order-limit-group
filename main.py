@@ -80,7 +80,7 @@ df_hungry = pd.read_sql("""
                         ORDER BY age;
                         """, conn2)
 
-print(df_hungry)
+# print(df_hungry)
 
 # STEP 7
 # Replace None with your code
@@ -91,7 +91,7 @@ df_hungry_ages = pd.read_sql("""
                              ORDER BY name;
                              """, conn2)
 
-print(df_hungry_ages)
+# print(df_hungry_ages)
 
 # STEP 8
 # Replace None with your code
@@ -102,7 +102,7 @@ df_4_oldest = pd.read_sql("""
                           LIMIT 4
                           """, conn2)
 
-print(df_4_oldest)
+# print(df_4_oldest)
 
 
 ##### Part 4: Aggregation #####
@@ -119,12 +119,21 @@ SELECT * FROM babe_ruth_stats; """, conn3)
 
 # STEP 9
 # Replace None with your code
-df_ruth_years = None
+df_ruth_years = pd.read_sql("""
+                            SELECT COUNT(*) AS total_years_played
+                            FROM babe_ruth_stats;
+                            """, conn3)
+
+print(df_ruth_years)
 
 # STEP 10
 # Replace None with your code
-df_hr_total = None
+df_hr_total = pd.read_sql("""
+                          SELECT SUM(HR) AS total_hrs
+                          FROM babe_ruth_stats;
+                          """, conn3)
 
+print(df_hr_total)
 
 ##### Part 5: Grouping and Aggregation #####
 
