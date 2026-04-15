@@ -12,25 +12,53 @@ pd.read_sql("""SELECT * FROM planets; """, conn1)
 
 # STEP 1
 # Replace None with your code
-df_no_moons = None
+df_no_moons = pd.read_sql("""
+                          SELECT * FROM planets
+                          WHERE num_of_moons = 0;
+                          """, conn1)
+
+# print(df_no_moons)
 
 # STEP 2
 # Replace None with your code
-df_name_seven = None
+df_name_seven = pd.read_sql("""
+                            SELECT name, mass
+                            FROM planets
+                            WHERE length(name) = 7;
+                            """, conn1)
+
+# print(df_name_seven)
 
 ##### Part 2: Advanced Filtering #####
 
 # STEP 3
 # Replace None with your code
-df_mass = None
+df_mass = pd.read_sql("""
+                      SELECT name, mass
+                      FROM planets
+                      WHERE mass <= 1.00;
+                      """, conn1)
+
+# print(df_mass)
 
 # STEP 4
 # Replace None with your code
-df_mass_moon = None
+df_mass_moon = pd.read_sql("""
+                           SELECT * FROM planets
+                           WHERE num_of_moons >= 1 AND mass <= 1.00;
+                           """, conn1)
+
+# print(df_mass_moon)
 
 # STEP 5
 # Replace None with your code
-df_blue = None
+df_blue = pd.read_sql("""
+                      SELECT name, color
+                      FROM planets
+                      WHERE color LIKE '%blue%';
+                      """, conn1)
+
+# print(df_blue)
 
 ##### Part 3: Ordering and Limiting #####
 
