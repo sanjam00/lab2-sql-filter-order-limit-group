@@ -45,7 +45,7 @@ df_mass = pd.read_sql("""
 # Replace None with your code
 df_mass_moon = pd.read_sql("""
                            SELECT * FROM planets
-                           WHERE num_of_moons >= 1 AND mass <= 1.00;
+                           WHERE num_of_moons >= 1 AND mass < 1.00;
                            """, conn1)
 
 # print(df_mass_moon)
@@ -73,15 +73,36 @@ pd.read_sql("SELECT * FROM dogs;", conn2)
 
 # STEP 6
 # Replace None with your code
-df_hungry = None
+df_hungry = pd.read_sql("""
+                        SELECT name, age, breed
+                        FROM dogs
+                        WHERE hungry = 1
+                        ORDER BY age;
+                        """, conn2)
+
+print(df_hungry)
 
 # STEP 7
 # Replace None with your code
-df_hungry_ages = None
+df_hungry_ages = pd.read_sql("""
+                             SELECT name, age, hungry
+                             FROM dogs
+                             WHERE hungry = 1 AND age >= 2 AND age <= 7
+                             ORDER BY name;
+                             """, conn2)
+
+print(df_hungry_ages)
 
 # STEP 8
 # Replace None with your code
-df_4_oldest = None
+df_4_oldest = pd.read_sql("""
+                          SELECT name, age, breed
+                          FROM dogs
+                          ORDER BY age DESC, breed ASC
+                          LIMIT 4
+                          """, conn2)
+
+print(df_4_oldest)
 
 
 ##### Part 4: Aggregation #####
